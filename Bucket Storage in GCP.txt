@@ -1,0 +1,32 @@
+Create a bucket 
+	gsutil mb gs://YOUR-BUCKET-NAME/
+
+Upload an object into your bucket
+	wget --output-document ada.jpg https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ada_Lovelace_portrait.jpg/800px-Ada_Lovelace_portrait.jpg
+	gsutil cp ada.jpg gs://YOUR-BUCKET-NAME
+
+Remove the downloaded image 
+	rm ada.jpg
+
+Download an object from ur bucket
+	gsutil cp -r gs://YOUR-BUCKET-NAME/ada.jpg .
+
+Copy an object to a folder in the bucket
+	gsutil cp gs://YOUR-BUCKET-NAME/ada.jpg gs://YOUR-BUCKET-NAME/image-folder/
+
+List contents of a bucket or folder
+	gsutil ls gs://YOUR-BUCKET-NAME
+
+List details for an object
+	gsutil ls -l gs://YOUR-BUCKET-NAME/ada.jpg
+
+Make your object publicly accessible
+	gsutil acl ch -u AllUsers:R gs://YOUR-BUCKET-NAME/ada.jpg
+
+Remove public access
+	gsutil acl ch -d AllUsers gs://YOUR-BUCKET-NAME/ada.jpg
+
+Delete objects
+	gsutil rm gs://YOUR-BUCKET-NAME/ada.jpg
+
+	
