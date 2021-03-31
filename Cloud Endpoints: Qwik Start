@@ -1,0 +1,38 @@
+Getting the sample code
+  git clone https://github.com/GoogleCloudPlatform/endpoints-quickstart
+  cd endpoints-quickstart
+
+Deploying the Endpoints configuration
+  cd scripts
+  ./deploy_api.sh
+  
+  Service Configuration [2017-02-13-r2] uploaded for service [airports-api.endpoints.example-project.cloud.goog]
+  
+Deploying the API backend
+  ./deploy_app.sh
+
+Sending requests to the API
+  ./query_api.sh
+  
+  curl "https://example-project.appspot.com/airportName?iataCode=SFO"
+  San Francisco International Airport
+  
+  ./query_api.sh JFK
+  
+Tracking API activity
+  ./generate_traffic.sh
+  
+Add a quota to the API
+  ./deploy_api.sh 
+  ../openapi_with_ratelimit.yaml
+  ./deploy_app.sh
+
+Create API Services > Credentials > API Key
+  export API_KEY=YOUR-API-KEY
+  ./query_api_with_key.sh $API_KEY
+  
+  curl -H 'x-api-key: AIzeSyDbdQdaSdhPMdiAuddd_FALbY7JevoMzAB' "https://example-project.appspot.com/airportName?iataCode=SFO"
+  San Francisco International Airport
+  ./generate_traffic_with_key.sh $API_KEY
+  
+  ./query_api_with_key.sh $API_KEY
