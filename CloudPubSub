@@ -1,0 +1,37 @@
+Create a virtual environment
+  sudo apt-get update
+  sudo apt-get install virtualenv
+  virtualenv -p python3 venv
+  source venv/bin/activate
+
+-- 
+Install the client library
+  pip install --upgrade google-cloud-pubsub
+  git clone https://github.com/googleapis/python-pubsub.git
+  cd python-pubsub/samples/snippets
+  
+--
+Create a topic
+  export GLOBAL_CLOUD_PROJECT=GCP Project ID
+  cat publisher.py
+  python publisher.py -h
+  python publisher.py $GLOBAL_CLOUD_PROJECT create MyTopic
+  
+  
+--
+Create a subscription
+  python subscriber.py $GLOBAL_CLOUD_PROJECT create MyTopic MySub
+  python subscriber.py $GLOBAL_CLOUD_PROJECT list-in-project
+  python subscriber.py -h
+  
+--
+Publish messages
+  gcloud pubsub topics publish MyTopic --message "Hello"
+  gcloud pubsub topics publish MyTopic --message "Publisher's name is <YOUR NAME>"
+  gcloud pubsub topics publish MyTopic --message "Publisher likes to eat <FOOD>"
+  gcloud pubsub topics publish MyTopic --message "Publisher thinks Pub/Sub is awesome"
+  
+--
+View messages
+  python subscriber.py $GLOBAL_CLOUD_PROJECT receive MySub
+  
