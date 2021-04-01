@@ -1,0 +1,24 @@
+Download the Code
+  git clone https://github.com/googlecodelabs/user-authentication-with-iap.git
+  cd user-authentication-with-iap
+  
+Deploy Application and Protect it with IAP
+  cd 1-HelloWorld
+  cat main.py  
+Deploy to App Engine
+  gcloud app deploy
+  gcloud app browse
+  
+  
+Access User Identity Information
+  cd ~/user-authentication-with-iap/2-HelloUser
+Deploy to App Engine
+  gcloud app deploy
+Examine the Application Files
+  user_email = request.headers.get('X-Goog-Authenticated-User-Email')
+  user_id = request.headers.get('X-Goog-Authenticated-User-ID')
+  page = render_template('index.html', email=user_email, id=user_id)
+  Hello, {{ email }}! Your persistent ID is {{ id }}.
+  
+Test the updated IAP
+  gcloud app browse
